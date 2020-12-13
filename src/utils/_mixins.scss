@@ -1,0 +1,321 @@
+@mixin border-radius($value)
+{
+  -webkit-border-radius: $value;
+  border-radius: $value;
+}
+
+@mixin filter($value)
+{
+  -webkit-filter: $value;
+  filter: $value;
+}
+
+/* Inline display */
+
+@mixin inline-block-top() {
+  display: inline-block;
+  vertical-align: top;
+}
+
+@mixin inline-block-mid() {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@mixin inline-block-bottom() {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+/* Flex display helpers */
+
+@mixin display-flex() {
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin display-inline-flex() {
+  display: inline-flex;
+  display: -webkit-inline-flex;
+}
+
+@mixin flex($value) {
+  -webkit-flex: $value;
+  flex: $value;
+}
+
+@mixin align-self($value) {
+  -webkit-align-self: $value;
+  align-self: $value;
+}
+
+@mixin flex-flow($value) {
+  -webkit-flex-flow: $value;
+  flex-flow: $value;
+}
+
+@mixin justify-content($value) {
+  -webkit-justify-content: $value;
+  justify-content: $value;
+}
+
+@mixin flex-direction($value) {
+  -webkit-flex-direction: $value;
+  flex-direction: $value;
+}
+
+@mixin flex-wrap() {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+@mixin align-items($value) {
+  -webkit-align-items: $value;
+  align-items: $value;
+}
+
+/* Grid display helpers */
+
+@mixin align-content($value) {
+  -webkit-align-content: $value;
+  align-content: $value;
+}
+
+@mixin column-gap-width($value) {
+  column-gap: $value;
+  -webkit-column-gap: $value;
+  -moz-column-gap: $value;
+}
+
+@mixin column-amount($value) {
+  -webkit-column-count: $value;
+  -moz-column-count: $value;
+  column-count: $value;
+}
+
+/* Transitions, Transforms, and Animations helpers */
+
+@mixin transition($value) {
+  -webkit-transition: $value;
+  transition: $value;
+}
+
+@mixin transition-delay($value) {
+  -webkit-transition-delay: $value;
+  transition-delay: $value;
+}
+
+@mixin animation($value) {
+  -webkit-animation: $value;
+  animation: $value;
+}
+
+@mixin animation-delay($value) {
+  -webkit-animation-delay: $value;
+  animation-delay: $value;
+}
+
+@mixin animation-duration($value) {
+  -webkit-animation-duration: $value;
+  animation-duration: $value;
+}
+
+@mixin pause-animation() {
+  -webkit-animation-play-state: paused !important;
+  animation-play-state: paused !important;
+}
+
+@mixin play-state($value) {
+  -webkit-animation-play-state: $value;
+  animation-play-state: $value;
+}
+
+@mixin keyframes($value) {
+  @-webkit-keyframes #{$value} {
+    @content
+  }
+
+  @-moz-keyframes #{$value} {
+    @content
+  }
+
+  @keyframes #{$value} {
+    @content
+  }
+}
+
+@mixin transform($value) {
+  -webkit-transform: $value;
+  transform: $value;
+}
+
+@mixin transform-origin($value) {
+  -webkit-transform-origin: $value;
+  transform-origin: $value;
+}
+
+@mixin perspective($value) {
+  -webkit-perspective: $value;
+  perspective: $value;
+}
+
+@mixin perspective-origin($value) {
+  -webkit-perspective-origin: $value;
+  perspective-origin: $value;
+}
+
+@mixin listAnimationDelay($value, $count) {
+  @for $i from 1 through $count {
+    &:nth-of-type(#{$i}) {
+      @include animation-delay(#{$value * $i}ms)
+    }
+  }
+}
+
+@mixin listAnimationDelayReverse($value, $count) {
+  @for $i from 1 through $count {
+    &:nth-of-type(#{$i}) {
+      @include animation-delay(#{($value * $count) - ($value * $i)}ms)
+    }
+  }
+}
+
+@mixin listTransitionDelay($value, $count) {
+  @for $i from 1 through $count {
+    &:nth-of-type(#{$i}) {
+      @include transition-delay(#{$value * $i}ms)
+    }
+  }
+}
+
+@mixin listTransitionDelayNoFirst($value, $count) {
+  @for $index from 1 through $count {
+    &:nth-of-type(#{$index}) {
+      @include transition-delay(#{$value * ($index - 1)}ms)
+    }
+  }
+}
+
+@mixin listTransitionDelayReverse($value, $count) {
+  @for $i from 1 through $count {
+    &:nth-of-type(#{$i}) {
+      @include transition-delay(#{($value * $count) - ($value * $i)}ms)
+    }
+  }
+}
+
+/* Images helpers */
+
+@mixin responsive-background-image($img, $img2x, $img3x) {
+  background-image: url($img);
+  background-image: -webkit-image-set(url($img) 1x, url($img2x) 2x, url($img3x) 3x);
+  background-image: image-set(url($img) 1x, url($img2x) 2x, url($img3x) 3x);
+}
+
+@mixin cover-background-image() {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin cover-image {
+  object-fit: cover;
+  object-position: center;
+}
+
+@mixin contain-image {
+  object-fit: contain;
+  object-position: center;
+}
+
+/* User Interactions */
+
+@mixin user-select($value) {
+  perspective-origin: $value;
+  -webkit-user-select: $value;
+  user-select: $value;
+}
+
+@mixin no-selection() {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+}
+
+/* Graphics Helpers */
+
+@mixin clip-path($value) {
+  -webkit-clip-path: $value;
+  clip-path: $value;
+}
+
+@mixin vertical-gradient-with-image($imageUrl, $fromColor, $toColor) {
+  background-image: linear-gradient(to bottom, $fromColor, $toColor), url($imageUrl);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor)), url($imageUrl);
+  background-image: -webkit-linear-gradient(to bottom, $fromColor, $toColor), url($imageUrl);
+}
+
+@mixin vertical-gradient($fromColor, $toColor) {
+  background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor));
+  background-image: -webkit-linear-gradient(to bottom, $fromColor, $toColor);
+  background-image: linear-gradient(to bottom, $fromColor, $toColor);
+}
+
+@mixin horizontal-gradient($fromColor, $toColor) {
+  background-image: -webkit-gradient(linear, left top, right top, from($fromColor), to($toColor));
+  background-image: -webkit-linear-gradient(to right, $fromColor, $toColor);
+  background-image: linear-gradient(to right, $fromColor, $toColor);
+}
+
+@mixin radial-gradient($fromColor, $toColor) {
+  background: -webkit-gradient(radial, center center, 0px, center center, 70%, color-stop(0%, $fromColor), color-stop(70%, $toColor));
+  background: -webkit-radial-gradient(center, ellipse cover, $fromColor 50%, $toColor 70%);
+  background: radial-gradient(ellipse at center, $fromColor 0%, $toColor 70%);
+}
+
+@mixin round() {
+  @include border-radius(50%);
+  overflow: hidden;
+}
+
+/* Shadows */
+
+@mixin light-bubble() {
+  @include border-radius(3px);
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, .045);
+  background-color: #fff;
+  border: 1px solid #efefef;
+}
+
+@mixin box-shadow($x, $y, $blur, $spread, $color) {
+  box-shadow: $x $y $blur $spread $color;
+  -webkit-box-shadow: $x $y $blur $spread $color;
+}
+
+/* Positions */
+
+@mixin fullAbsolute() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Text Helpers */
+
+@mixin ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Inputs */
+
+@mixin placeholder-color($color) {
+  &::placeholder { color: $color; }
+  &:-ms-input-placeholder { color: $color; }
+  &::-ms-input-placeholder { color: $color; }
+  &::-webkit-input-placeholder { color: $color; }
+}

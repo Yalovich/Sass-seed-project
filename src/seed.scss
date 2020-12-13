@@ -1,1 +1,30 @@
 @use "utils/normalize";
+@use "utils/media";
+@use "utils/mixins";
+@use "utils/animations";
+
+$laptop: media.$laptop;
+$mobile: media.$mobile;
+$tablet: media.$tablet;
+
+body
+{
+  @media #{$laptop} {
+    background-color: blue;
+  }
+
+  >div
+  {
+    height: 400px;
+    width: 300px;
+    @include mixins.vertical-gradient(#252525, purple);
+  }
+
+  @media #{$tablet} {
+    background-color: yellow;
+  }
+  
+  @media #{$mobile} {
+    background-color: green;
+  }
+}

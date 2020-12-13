@@ -336,3 +336,57 @@ template {
 [hidden] {
   display: none;
 }
+
+/* 2019 Website - Media Queries */
+/* Inline display */
+/* Flex display helpers */
+/* Grid display helpers */
+/* Transitions, Transforms, and Animations helpers */
+/* Images helpers */
+/* User Interactions */
+/* Graphics Helpers */
+/* Shadows */
+/* Positions */
+/* Text Helpers */
+/* Inputs */
+/**
+  Animations file. Add animations in here. Example:
+ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  body {
+    background-color: blue;
+  }
+}
+body > div {
+  height: 400px;
+  width: 300px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#252525), to(purple));
+  background-image: -webkit-linear-gradient(to bottom, #252525, purple);
+  background-image: linear-gradient(to bottom, #252525, purple);
+}
+@media only screen and (min-width: 481px) and (max-width: 1024px) {
+  body {
+    background-color: yellow;
+  }
+}
+@media only screen and (max-width: 480px) {
+  body {
+    background-color: green;
+  }
+}

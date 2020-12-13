@@ -25,14 +25,19 @@ const DIST_DIR = `${path.resolve(__dirname)}/dist`;
 
 const INPUT_FILE = `${SRC_DIR}/${FILENAME}.${SUFFIX}`;
 
-const build = (INPUT_FILE, DIST_DIR, FILENAME) => {
-    const result = sass.renderSync({
-        file: INPUT_FILE,
-        sourceMap: true
-    });
+const build = (INPUT_FILE, DIST_DIR, FILENAME, compressed = false) => {
+    try {
+        const result = sass.renderSync({
+            file: INPUT_FILE,
+            outputStyle: compressed ? "compressed" : "expanded"
+        });
 
-    fs.writeFileSync(`${DIST_DIR}/${FILENAME}.css`, result.css);
-    console.log("\t<< Build completed. T:", (result.stats['duration'] / 1000))
+        fs.writeFileSync(`${DIST_DIR}/${FILENAME}.css`, result.css);
+        console.log("\t<< Build completed. T:", (result.stats['duration'] / 1000))
+    } catch(error)
+    {
+        console.log("\t>> Sass error: \n\n\x1b[31m%s\x1b[0m\n", error.formatted);
+    }
 }
 
 console.log("\t>> Entry point: ", `${INPUT_FILE}`);
@@ -46,4 +51,4 @@ if(WATCH)
     });
 }
 
-build(INPUT_FILE, DIST_DIR, FILENAME);
+build(INPUT_FILE, DIST_DIR, FILENAME, true);

@@ -1,0 +1,17 @@
+{
+  "name": "sass-seed",
+  "version": "0.0.1",
+  "description": "High-performed and wealthy Sass seed project ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./build.js",
+    "build": "node ./build.js"
+  },
+  "author": "Idan Yalovich (yalovich.com)",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.30.0"
+  },
+  "dependencies": {}
+}
